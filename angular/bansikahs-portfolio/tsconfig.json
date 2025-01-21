@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2018", "dom"],
+    "outDir": "./out-tsc/app",
+    "baseUrl": "./",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "angularCompilerOptions": {
+    "enableIvy": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

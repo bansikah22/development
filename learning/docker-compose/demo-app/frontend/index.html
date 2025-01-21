@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links Demo</title>
+</head>
+<body>
+    <h1>Links</h1>
+    <ul id="links"></ul>
+
+    <script>
+        fetch('./public/links.json')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('links');
+                data.forEach(link => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<a href="${link.url}" target="_blank">${link.name}</a>`;
+                    list.appendChild(listItem);
+                });
+            })
+            .catch(err => console.error('Error loading links:', err));
+    </script>
+</body>
+</html>
+

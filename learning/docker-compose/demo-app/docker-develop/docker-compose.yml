@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: links-frontend
+    volumes:
+      - ./links/links.json:/usr/share/nginx/html/public/links.json
+    ports:
+      - "8083:80"
