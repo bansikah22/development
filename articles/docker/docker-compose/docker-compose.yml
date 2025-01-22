@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: nginx:alpine
+    container_name: frontend
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+
+  backend:
+    image: node:14
+    container_name: backend
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=db
+      - DB_USER=admin
+      - DB_PASS=secret
+    volumes:
+      - ./backend:/usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - webnet
+
+  db:
+    image: postgres:13
+    container_name: db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=appdb
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
+
+volumes:
+  db_data:
+
