@@ -1,0 +1,38 @@
+## A Map
+- A map is a collection of key-value pairs.
+- Each key is unique and maps to a single value.
+- The key is used to retrieve the value.
+- The value can be any object.
+- The map interface provides three collection views:
+  - `Key Set`: A set of unique keys.
+  - `Value Set`: A collection of values.
+  - `Entry Set`: A set of key-value pairs.
+  - The map interface provides methods to:
+    - Add key-value pairs.
+    - Remove key-value pairs.
+    - Retrieve values by key.
+    - Check if a key or value exists.
+    - Iterate over key-value pairs.
+    - Get the size of the map.
+    - Check if the map is empty.
+    - Clear the map.
+    - Perform bulk operations like putAll and removeAll.
+    - Get the hash code of the map.
+  - The map interface does not extend the Collection interface.
+  - The map interface provides several implementations:
+    - `HashMap`: Provides a hash table implementation of the Map interface.
+    - `LinkedHashMap`: Provides a hash table and linked list implementation of the Map interface.
+    - `TreeMap`: Provides a red-black tree implementation of the Map interface.
+    - `EnumMap`: Provides a specialized Map implementation for enum types.
+    - `WeakHashMap`: Provides a hash table implementation with weak keys.
+    - `IdentityHashMap`: Provides a hash table implementation with reference-equality in place of object-equality.
+    - `ConcurrentHashMap`: Provides a thread-safe implementation of the Map interface.
+    - `ConcurrentSkipListMap`: Provides a thread-safe implementation of the NavigableMap interface.
+    - `Properties`: Extends Hashtable and represents a persistent set of properties.
+  
+### Use cases
+- Storing and retrieving key-value pairs.
+- Implementing data structures like dictionaries, hash tables, and associative arrays.
+- Implementing algorithms like memoization, caching, and counting frequencies.
+- Managing configuration settings in applications.
+- Storing and processing data in web applications, such as user preferences, session data, and application state.

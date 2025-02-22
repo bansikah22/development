@@ -5,6 +5,15 @@ import java.util.List;
 
 public class WorkingWithLists {
     public static void main(String [] args){
+        //another way of creating list, this list is unmodifiable
+        List.of(
+                "John",
+                "Doe",
+                "Jane",
+                "Doe"
+        );
+
+
         // Create a list of integers
         List<Integer> numbers = new ArrayList<>();// Initialize an array list of integers
         numbers.add(10); // Add 10 to the list
@@ -29,6 +38,27 @@ public class WorkingWithLists {
         }
 
         System.out.println(names.size()); // Print the size of the list
-        System.out.println(names.get(4)); // create an index out of bounds exception
+        //System.out.println(names.get(4)); // create an index out of bounds exception
+
+        //creating a list of array colors
+        List<String> colors = new ArrayList<>();
+        colors.add("Red");
+        colors.add("Blue");
+        colors.add("Green");
+
+        System.out.println(colors); // Print the list of colors
+        System.out.println(colors.get(1)); // Print the second element of the list
+        System.out.println(colors.size()); // Print the size of the list
+        System.out.println(colors.contains("Red")); // Check if the list contains "Red"
+
+        // Remove the first element from the list
+        colors.removeFirst();
+        // Print the list of colors
+        System.out.println(colors);
+
+        // iterate list using enhanced for loop
+        for(String color : colors){
+            System.out.println(color);
+        }
     }
 }
