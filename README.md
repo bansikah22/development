@@ -1,3 +1,3 @@
 # development
 All applications in all Languages, Spring boot, react...
-Test Pr summarizer
+Test Pr summarizer and something
