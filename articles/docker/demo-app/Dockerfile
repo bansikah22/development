@@ -6,7 +6,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run
-FROM openjdk:17-jdk-slim
+FROM openjdk:25-jdk-slim
 WORKDIR /app
 COPY --from=builder /app/target/demo-app-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
