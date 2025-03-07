@@ -21,3 +21,4 @@ jobs:
         uses: bansikah22/pr-summarizer@v1.0.4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          version: v1.0.4  # Match the tag of the release
