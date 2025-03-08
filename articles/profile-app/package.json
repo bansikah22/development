@@ -1,0 +1,13 @@
+{
+    "name": "profile-app",
+    "version": "1.0.0",
+    "description": "A simple Node.js app to learn Kubernetes volume mounting",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2"
+    }
+  }
+  
