@@ -4,7 +4,7 @@ public class Main {
         car1.go();
         System.out.println(car1);
 
-        Bicycle bike = new Bicycle(8.5, 2); // Pass both speed and pedals
+        Bicycle bike = new Bicycle(8.5, 2); // ✅ Pass both speed and pedals
         bike.go();
         System.out.println(bike);
 
