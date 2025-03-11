@@ -1,0 +1,8 @@
+namespace: dev
+resources:
+  - ../../base
+
+configMapGenerator:
+  - name: profile-app-config
+    files:
+      - config.json=config.json

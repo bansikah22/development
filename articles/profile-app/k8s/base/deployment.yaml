@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: profile-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: profile-app
+  template:
+    metadata:
+      labels:
+        app: profile-app
+    spec:
+      containers:
+      - name: profile-app
+        image: bansikah/profile-app:latest
+        ports:
+        - containerPort: 3001
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config
+          # subPath: config.json
+          # readOnly: false
+      volumes:
+      - name: config-volume
+        configMap:
+          name: profile-app-config
