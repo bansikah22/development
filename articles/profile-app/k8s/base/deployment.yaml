@@ -15,6 +15,7 @@ spec:
       containers:
       - name: profile-app
         image: bansikah/profile-app:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3001
         resources:
@@ -27,8 +28,8 @@ spec:
         volumeMounts:
         - name: config-volume
           mountPath: /app/config
-          # subPath: config.json
-          # readOnly: false
+          subPath: config.json
+          readOnly: false
       volumes:
       - name: config-volume
         configMap:
