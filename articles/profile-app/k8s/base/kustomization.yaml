@@ -1,0 +1,10 @@
+resources:
+  - deployment.yaml
+  - service.yaml
+  - pvc.yaml
+  - namespace.yaml
+
+images:
+  - name: profile-app
+    newName: bansikah/profile-app
+    newTag: latest
