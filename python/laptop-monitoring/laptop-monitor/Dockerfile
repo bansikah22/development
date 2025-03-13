@@ -1,10 +1,17 @@
 FROM python:3.9-slim
 WORKDIR /app
+
+# Copy requirements first to leverage Docker cache
 COPY requirements.txt /app/
-COPY static/ /app/static/
-COPY app/ /app/app/
 RUN pip install -r requirements.txt
 
-# Debug: List files in /app to verify static files
-RUN ls -la /app && ls -la /app/static && ls -la /app/static/css && ls -la /app/static/js
-CMD ["python", "app/__init__.py"]
+# Create static directory structure explicitly
+RUN mkdir -p /app/static/css /app/static/js
+
+# Copy all application files
+COPY . /app/
+
+# Ensure proper permissions for static files
+RUN chmod -R 755 /app/static
+
+CMD ["python", "-m", "flask", "run", "--host=0.0.0.0"]

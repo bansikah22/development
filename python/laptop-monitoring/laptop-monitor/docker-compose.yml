@@ -3,6 +3,8 @@ services:
     build: .
     ports:
       - "5001:5000"
+    volumes:
+      - ./static:/app/static
     depends_on:
       - redis
     environment:
