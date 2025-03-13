@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Laptop Performance Dashboard</h1>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3>CPU Usage</h3>
+                <p class="metric-value">{{ metrics.cpu_percent }}%</p>
+            </div>
+            <div class="metric-card">
+                <h3>Memory Usage</h3>
+                <p class="metric-value">{{ metrics.memory_percent }}%</p>
+            </div>
+            <div class="metric-card">
+                <h3>Disk Usage</h3>
+                <p class="metric-value">{{ metrics.disk_percent }}%</p>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="performanceChart"></canvas>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
