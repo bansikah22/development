@@ -1,0 +1,13 @@
+package com.bansikah.demolambdaspringboot;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DemoLambdaSpringBootApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(DemoLambdaSpringBootApplication.class, args);
+    }
+
+}

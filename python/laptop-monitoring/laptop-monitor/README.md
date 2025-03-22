@@ -11,10 +11,14 @@ A Flask app to monitor laptop performance using Redis.
 - Docker
 
 ## Debug
-
+docker-compose down
+docker-compose build --no-cache
+docker-compose up
 docker-compose exec flask-app ls -la /app/static/css
 
 
 ## Features
 - Real-time CPU, memory, and disk usage
 - Historical data visualization with charts
+
+![Sample Image](./docs/cpu-analysis.png)
