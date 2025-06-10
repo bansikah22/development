@@ -1,0 +1,2 @@
+Hello, this is a test of Java IO and NIO file handling!
+Second line of the file.
