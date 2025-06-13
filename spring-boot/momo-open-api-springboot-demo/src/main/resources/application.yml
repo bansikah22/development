@@ -1,0 +1,15 @@
+server:
+  port: 8282
+
+spring:
+  application:
+    name: momo-open-api-springboot-demo
+
+mtn:
+  momo:
+    user-id: your userid
+    api-key: your apikey
+    subscription-key: your sub key(primary or secondary key)
+    environment: sandbox
+    currency: EUR
+    base-url: https://sandbox.momodeveloper.mtn.com
