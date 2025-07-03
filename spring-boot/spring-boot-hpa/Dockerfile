@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-slim
+FROM openjdk:26-jdk-slim
 
 # Argument for the JAR file to copy
 ARG JAR_FILE=target/spring-boot-hpa-0.0.1-SNAPSHOT.jar
