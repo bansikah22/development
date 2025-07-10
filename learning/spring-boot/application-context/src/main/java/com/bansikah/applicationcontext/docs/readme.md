@@ -41,13 +41,15 @@ Configuration Metadata -> Spring IoC Container -> Application Context -> Beans -
 ### Diagram
 ```plantuml
 @startuml
-A[Configuration Metadata] --> B[Spring IoC Container]
-B --> C[Application Context]
-C --> D[Beans]
-D --> E[Business Objects (POJO)]
-E --> F[Ready to use by the system in our application]
+"Configuration Metadata" --> "Spring IoC Container"
+"Spring IoC Container" --> "Application Context"
+"Application Context" --> "Beans"
+"Beans" --> "Business Objects (POJO)"
+"Business Objects (POJO)" --> "Ready to use by the system in our application"
 @enduml
 ```
+
+![spring context](./springcontext.png)
 
 ### What is Dependency Injection?
 - Dependency Injection is a technique where one object supplies the dependencies of another object.
