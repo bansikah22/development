@@ -1,4 +1,4 @@
-FROM openjdk:17-slim as build
+FROM openjdk:26-slim as build
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ COPY src ./src
 
 RUN chmod +x mvnw && ./mvnw clean package -DskipTests
 
-FROM openjdk:17-slim
+FROM openjdk:26-slim
 
 WORKDIR /app
 
