@@ -82,9 +82,6 @@ The repository is organized into progressive learning paths that build upon each
 ### **DevOps & Infrastructure**
 - Containerization with Docker
 - Orchestration with Kubernetes
-- CI/CD pipeline setup
-- Cloud platform integration
-- Monitoring and logging
 
 
 ## 🚀 Getting Started
@@ -126,11 +123,10 @@ This repository is actively maintained and continuously expanding. Upcoming addi
 
 - **New Programming Languages**: Rust, C#, PHP, Ruby
 - **Advanced Frameworks**: Next.js, Vue.js, Angular, Django
-- **Cloud Technologies**: AWS, Azure, Google Cloud Platform
 - **Mobile Development**: React Native, Flutter
 - **Machine Learning**: TensorFlow, PyTorch, scikit-learn
 - **Database Technologies**: PostgreSQL, MongoDB, Elasticsearch
-- **Advanced DevOps**: Terraform, Ansible, Jenkins
+
 
 ---
 
