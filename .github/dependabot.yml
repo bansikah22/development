@@ -7,7 +7,7 @@ updates:
       interval: "weekly"
       day: "monday"
       time: "09:00"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     reviewers:
       - "bansikah22"
     assignees:
@@ -18,54 +18,6 @@ updates:
 
   # Enable version updates for npm (Node.js/React)
   - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    open-pull-requests-limit: 10
-    reviewers:
-      - "bansikah22"
-    assignees:
-      - "bansikah22"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
-
-  # Enable version updates for pip (Python)
-  - package-ecosystem: "pip"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    open-pull-requests-limit: 10
-    reviewers:
-      - "bansikah22"
-    assignees:
-      - "bansikah22"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
-
-  # Enable version updates for GitHub Actions
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    open-pull-requests-limit: 5
-    reviewers:
-      - "bansikah22"
-    assignees:
-      - "bansikah22"
-    commit-message:
-      prefix: "ci"
-      include: "scope"
-
-  # Enable version updates for Docker
-  - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "weekly"
@@ -94,4 +46,20 @@ updates:
       - "bansikah22"
     commit-message:
       prefix: "chore"
+      include: "scope"
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 3
+    reviewers:
+      - "bansikah22"
+    assignees:
+      - "bansikah22"
+    commit-message:
+      prefix: "ci"
       include: "scope"
