@@ -7,7 +7,9 @@ float multiply(float x, float y);
 void greet(char name[]);
 int factorial(int n);
 void swap(int *a, int *b);
-int isEven(int num);
+int isEven(int num) {
+    return num % 2 == 0;
+}
 void printArray(int arr[], int size);
 
 int main() {
@@ -38,14 +40,14 @@ int main() {
     printf("After swap: x=%d, y=%d\n", x, y);
 
     // Function returning boolean-like value
-    printf("\n=== BOOLEAN FUNCTIONS ===\n");
-    for (int i = 1; i <= 5; i++) {
-        if (isEven(i)) {
-            printf("%d is even\n", i);
-        } else {
-            printf("%d is odd\n", i);
-        }
-    }
+     printf("\n=== BOOLEAN FUNCTIONS ===\n");
+       for (int i = 1; i <= 5; i++) {
+           if (isEven(i)) {
+               printf("%d is even\n", i);
+           } else {
+               printf("%d is odd\n", i);
+           }
+       }
 
     // Function with arrays
     printf("\n=== FUNCTIONS WITH ARRAYS ===\n");

@@ -43,7 +43,7 @@ data_type variable_name = initial_value;
 
 ## How to Run
 ```bash
-gcc variables.c -o variables
+gcc control.c -o variables
 ./variables
 ```
 

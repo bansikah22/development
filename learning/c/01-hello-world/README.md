@@ -30,7 +30,7 @@ int main() {
 
 ```bash
 # Compile the program
-gcc hello.c -o hello
+gcc control.c -o hello
 
 # Run the program
 ./hello

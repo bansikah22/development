@@ -1,4 +1,4 @@
-# Control Structures in C
+ # Control Structures in C
 
 ## Concept
 Control structures determine the flow of program execution. They allow you to make decisions, repeat actions, and control the sequence of operations in your program.
