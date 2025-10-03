@@ -93,26 +93,3 @@ int main(){
    printf("%d bytes reallocated at address %p \n", size, ptr2);
     free(ptr2); // Free the allocated memory
 }
-
-int main(){
-    int *ptr1, *ptr2, size;
-    
-    size = 4 * sizeof(*ptr1);
-    ptr1 = malloc(size);
-    
-   printf("%d bytes allocated at address %p \n", size, ptr1);
-   
-  // Resize the memory to hold six integers
-  size = 0 * sizeof(*ptr1);
-  ptr2 = realloc(ptr1, size);
-   
-  if(ptr1 == NULL){
-      printf("Failed to allocate memory \n");
-      free(ptr1);
-      return 1;
-  }else{
-       printf("Success! We have %d bytes allocated at address %p \n", size, ptr2);
-  }
-  return 0;
-   
-}
