@@ -1,0 +1,152 @@
+@startuml QR Menu Generator Architecture
+
+!define RECTANGLE class
+!define COMPONENT component
+!define DATABASE database
+!define CLOUD cloud
+
+title QR Menu Generator - System Architecture
+
+' External User
+actor "Restaurant Owner" as owner
+actor "Customer" as customer
+
+' Frontend Layer
+CLOUD "Load Balancer / Reverse Proxy" as lb {
+}
+
+RECTANGLE "Frontend Tier" as frontend_tier {
+    COMPONENT "React Frontend" as frontend {
+        - Vite Build System
+        - TypeScript
+        - Tailwind CSS
+        - React Hook Form
+        --
+        Port: 80
+        Image: bansikah/qr-menu-frontend
+    }
+    
+    COMPONENT "Nginx Server" as nginx {
+        - Static File Serving
+        - Reverse Proxy
+        - Security Headers
+        - Gzip Compression
+    }
+}
+
+' Backend Layer
+RECTANGLE "Application Tier" as app_tier {
+    COMPONENT "Spring Boot API" as backend {
+        - REST API Endpoints
+        - QR Code Generation (ZXing)
+        - Menu Management
+        - CORS Configuration
+        --
+        Port: 8080
+        Image: bansikah/qr-menu-backend
+        Java: 17
+        Framework: Spring Boot 3.1.0
+    }
+    
+    COMPONENT "Business Logic" as business {
+        - Restaurant Service
+        - Menu Service
+        - QR Generation Service
+        - DTO Mapping (MapStruct)
+    }
+}
+
+' Data Layer
+RECTANGLE "Data Tier" as data_tier {
+    DATABASE "PostgreSQL" as db {
+        - Primary Database
+        - Persistent Storage
+        - ACID Compliance
+        --
+        Version: 15-alpine
+        Port: 5432
+        Volume: postgres_data
+    }
+}
+
+' Docker Infrastructure
+RECTANGLE "Container Infrastructure" as docker_infra {
+    COMPONENT "Docker Network" as network {
+        - Bridge Network: qr-menu-network
+        - Internal Communication
+        - Service Discovery
+    }
+    
+    COMPONENT "Docker Volumes" as volumes {
+        - postgres_data (Persistent)
+        - Database Storage
+    }
+    
+    COMPONENT "Health Checks" as health {
+        - Database: pg_isready
+        - Backend: /actuator/health
+        - Frontend: HTTP response
+    }
+}
+
+' External Services
+CLOUD "Docker Registry" as registry {
+    COMPONENT "Docker Hub" as dockerhub {
+        - bansikah/qr-menu-backend:latest
+        - bansikah/qr-menu-frontend:latest
+    }
+}
+
+' User Interactions
+owner --> lb : Access Admin Panel
+customer --> lb : Scan QR Code\nView Menu
+
+' Request Flow
+lb --> nginx : Route Requests
+nginx --> frontend : Serve Static Files
+frontend --> backend : API Calls\n(REST/JSON)
+backend --> business : Process Requests
+business --> db : CRUD Operations
+
+' Infrastructure Relationships
+frontend -.-> network : Container Communication
+backend -.-> network : Container Communication  
+db -.-> network : Container Communication
+db --> volumes : Persistent Data
+frontend -.-> health : Health Monitoring
+backend -.-> health : Health Monitoring
+db -.-> health : Health Monitoring
+
+' Deployment
+registry --> docker_infra : Pull Images\n(Production Deploy)
+
+' Data Flow Annotations
+note right of frontend
+  - Single Page Application
+  - Environment-aware API detection
+  - Responsive Design
+  - Form Validation
+end note
+
+note right of backend
+  - RESTful API Design
+  - Global CORS Configuration
+  - Environment-based URLs
+  - JPA/Hibernate ORM
+end note
+
+note right of db
+  - ACID Transactions
+  - Referential Integrity
+  - Connection Pooling
+  - Backup Ready
+end note
+
+' Network Annotations
+note bottom of network
+  All containers communicate through
+  isolated Docker bridge network
+  with DNS resolution
+end note
+
+@enduml

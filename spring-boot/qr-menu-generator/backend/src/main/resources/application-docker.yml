@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: qr-menu-generator
+  
+  datasource:
+    url: jdbc:postgresql://postgres:5432/qrmenudb
+    driver-class-name: org.postgresql.Driver
+    username: qrmenu_user
+    password: qrmenu_password
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    defer-datasource-initialization: false
+    properties:
+      hibernate:
+        format_sql: false
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# Application configuration for Docker deployment
+app:
+  base-url: ${APP_BASE_URL:http://localhost}
+
+# CORS configuration for Docker
+cors:
+  allowed-origins: 
+    - ${FRONTEND_URL:http://localhost}
+    - ${FRONTEND_URL:http://localhost}:80
+    - ${FRONTEND_URL:http://localhost}:3000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.qrmenu: INFO
+    org.springframework.web: WARN
+    org.hibernate: WARN

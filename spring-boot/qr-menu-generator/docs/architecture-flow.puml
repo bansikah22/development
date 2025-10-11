@@ -1,0 +1,92 @@
+@startuml QR Menu Generator Architecture Flow
+
+!define CONTAINER_COLOR #E1F5FE
+!define API_COLOR #FFF3E0
+!define DB_COLOR #E8F5E8
+!define FRONTEND_COLOR #FCE4EC
+
+title QR Menu Generator - Application Flow Architecture
+
+actor "Restaurant Owner" as owner
+actor "Customer" as customer
+participant "Frontend (React)" as frontend FRONTEND_COLOR
+participant "Nginx Reverse Proxy" as nginx API_COLOR
+participant "Spring Boot API" as api API_COLOR
+participant "PostgreSQL Database" as db DB_COLOR
+participant "QR Code Service" as qr API_COLOR
+
+== Restaurant Setup Flow ==
+
+owner -> frontend: Access admin panel
+frontend -> nginx: HTTP Request
+nginx -> api: Proxy to /api/*
+api -> db: Query/Update restaurant data
+db -> api: Return data
+api -> nginx: JSON response
+nginx -> frontend: Proxy response
+frontend -> owner: Display UI
+
+owner -> frontend: Create restaurant
+frontend -> api: POST /api/restaurants
+api -> db: INSERT restaurant
+db -> api: Return created restaurant
+api -> frontend: Restaurant data + ID
+
+owner -> frontend: Add menu items
+frontend -> api: POST /api/restaurants/{id}/menu-items
+api -> db: INSERT menu items
+db -> api: Return menu items
+api -> frontend: Menu items data
+
+== QR Code Generation Flow ==
+
+owner -> frontend: Request QR code
+frontend -> api: GET /api/restaurants/{id}/qr-code
+api -> qr: generateQrCode(restaurantId)
+qr -> qr: Create menu URL\n(baseUrl + "/api/menu/" + id)
+qr -> qr: Generate QR code image
+qr -> api: Return base64 QR code + URL
+api -> frontend: QR code data
+frontend -> owner: Display QR code for printing
+
+== Customer Menu Access Flow ==
+
+customer -> customer: Scan QR code
+customer -> nginx: GET /api/menu/{restaurantId}
+nginx -> api: Proxy request
+api -> db: Query restaurant + menu items
+db -> api: Return complete menu data
+api -> nginx: Menu JSON response
+nginx -> customer: Display formatted menu
+
+== Docker Container Communication ==
+
+box "Docker Network" CONTAINER_COLOR
+    participant "qr-menu-frontend\n(Port 80)" as docker_frontend
+    participant "qr-menu-backend\n(Port 8080)" as docker_backend
+    participant "qr-menu-postgres\n(Port 5432)" as docker_db
+end box
+
+docker_frontend -> docker_backend: Internal network\n(backend:8080)
+docker_backend -> docker_db: Internal network\n(postgres:5432)
+
+== Environment Configuration Flow ==
+
+note over api
+Environment Variables:
+- APP_BASE_URL: Base URL for QR codes
+- FRONTEND_URL: CORS configuration
+- Database connection settings
+end note
+
+== Production Deployment Flow ==
+
+owner -> owner: Set environment variables:\n- APP_BASE_URL=https://domain.com\n- FRONTEND_URL=https://domain.com
+owner -> owner: docker-compose up -d
+note over docker_frontend, docker_db
+All containers start with production URLs
+QR codes generate with correct domain
+CORS allows production frontend requests
+end note
+
+@enduml
