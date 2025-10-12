@@ -1,0 +1,74 @@
+# Backend .gitignore for Spring Boot
+
+# Compiled class files
+*.class
+target/
+build/
+out/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.staging
+
+# Spring Boot specific
+application-local.properties
+application-local.yml
+
+# Maven specific
+.mvn/
+mvnw
+mvnw.cmd
+
+# Gradle specific (if using Gradle)
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+# Database files (H2)
+*.db
+*.mv.db
+*.trace.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# JVM Crash logs
+hs_err_pid*
+
+# Application specific
+uploads/
+temp/
