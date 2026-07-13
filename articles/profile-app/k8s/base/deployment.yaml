@@ -27,9 +27,9 @@ spec:
             cpu: "250m"
         volumeMounts:
         - name: config-volume
-          mountPath: /app/config
+          mountPath: /app/config/config.json
           subPath: config.json
-          readOnly: false
+          readOnly: true
       volumes:
       - name: config-volume
         configMap:
